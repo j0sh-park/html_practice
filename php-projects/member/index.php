@@ -17,6 +17,7 @@ $conn = mysqli_connect( // DB 연결
 $qry = 'SELECT * FROM member;'; // member table조회 query
 $result = mysqli_query($conn, $qry); // query 실행
 ?>
+<a href="register.php">등록</a>
 <table>
 	<thead>
 		<th>ID</th>
