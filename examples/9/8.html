@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      var input = prompt("네 자리 정수를 입력해주세요", '0');
+      var val = parseInt(input / 1000);
+      alert(val);
+
+      input = input - val * 1000;
+      val = parseInt(input / 100);
+      alert(val);
+
+      input = input - val * 100;
+      val = parseInt(input / 10);
+      alert(val);
+
+      input = input - val * 10;
+      alert(input);
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
