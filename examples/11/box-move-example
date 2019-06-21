@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#box').css({
+          width: 100,
+          height: 100,
+          background: 'red',
+          position: 'absolute',
+          left: 0,
+          top: 50
+        });
+
+        $('button').click(function() {
+          var box = $('#box');
+          var left = box.offset().left;
+          var top = box.offset().top;
+          var width = box.width();
+          var height = box.height();
+
+          var color = '#' + parseInt(
+            Math.random() * 0xFFFFFF
+          ).toString(16);
+
+          box.css('background', color);
+          if (left <= width * 2) {
+            left = left + width;
+            box.animate({
+              left: left
+            }, 500);
+          } else {
+            left = 0;
+            top = top + height;
+            width = width + 100;
+            height = height + 100;
+            box.animate({
+              left: left,
+              top: top,
+              width: width,
+              height: height
+            });
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button type="button" name="button">move button</button>
+    <div id="box"></div>
+  </body>
+</html>
