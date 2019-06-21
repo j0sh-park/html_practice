@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Slider</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var width = $('[data-role="slider"]').attr('data-width');
+        var height = $('[data-role="slider"]').attr('data-height');
+        var count = $('[data-role="slider"] div.item').length;
+
+        $('[data-role="slider"]').css({
+          position: 'relative',
+          overflow: 'hidden',
+          width: width,
+          height: height
+        }).find('.container').css({
+          position: 'absolute',
+          width: count * width,
+          overflow: 'hidden'
+        }).find('.item').css({
+          width: width,
+          height: height,
+          float: 'left'
+        });
+
+        var currentPage = 0;
+        var changePage = function() {
+          $('[data-role="slider"] > .container').animate({
+            left: -currentPage * width
+          }, 500);
+        };
+
+        $('#left-button').click(function() {
+          if (currentPage > 0) {
+            currentPage = currentPage - 1;
+            changePage();
+          }
+        });
+
+        $('#right-button').click(function() {
+          if (currentPage < count - 1) {
+            currentPage = currentPage + 1;
+            changePage();
+          }
+        });
+      });
+      $(document).ready(function() {
+
+      });
+    </script>
+    <style media="screen">
+      div.item:nth-child(1) { background: blueviolet; }
+      div.item:nth-child(2) { background: pink; }
+      div.item:nth-child(3) { background: burlywood; }
+    </style>
+  </head>
+  <body>
+    <div data-role="slider" data-width="500" data-height="300">
+      <div class="container">
+        <div class="item">
+          <h1>What is Lorem Ipsum?</h1>
+          <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
+        </div>
+        <div class="item">
+          <h1>It is a long established fact that a reader will be distracted</h1>
+          <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident</p>
+        </div>
+        <div class="item">
+          <h1>Where can I get some?</h1>
+          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text</p>
+        </div>
+      </div>
+    </div>
+    <button type="button" id="left-button">Left</button>
+    <button type="button" id="right-button">right</button>
+  </body>
+</html>
