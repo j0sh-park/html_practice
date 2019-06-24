@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#box').css({
+          width: 100,
+          height: 100,
+          background: 'red',
+          position: 'absolute',
+          left: 0,
+          top: 50
+        });
+
+        $('button').click(function() {
+          var box = $('#box');
+          var left = box.offset().left;
+          var top = box.offset().top;
+          var width = box.width();
+          var height = box.height();
+
+          var color = '#' + parseInt(
+            Math.random() * 0xFFFFFF
+          ).toString(16);
+
+          box.css('background', color);
+          if (left <= width * 2 && top < height) {
+            left = left + width;
+            box.animate({
+              left: left
+            }, 500);
+          } else if (left >= width * 2 && top <= height * 2 + 50) {
+            top = top + height;
+            box.animate({
+              top: top
+            }, 500);
+          } else if (top >= height * 2 + 50 && left > 0) {
+            left = left - width;
+            if (left < 0) {
+              left = 0;
+            }
+            box.animate({
+              left: left
+            }, 500);
+          } else if (top > 0 && left == 0) {
+            top = top - height;
+            if (top < 0) {
+              top = 0;
+            }
+            box.animate({
+              top: top
+            }, 500);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button type="button" name="button">move button</button>
+    <div id="box"></div>
+  </body>
+</html>

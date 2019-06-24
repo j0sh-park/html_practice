@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      #box {
+        width: 100px;
+        height: 100px;
+        background: red;
+        position: absolute;
+        left: 0px;
+        top: 50px;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    var topMin = 50;
+    var topMax = 350;
+    var leftMin = 0;
+    var leftMax = 300;
+    var isGoingForward = true;
+
+    $(document).ready(function() {
+      $('#moveButton').click(function() {
+        var box = $('#box');
+        var left = box.offset().left;
+        var top = box.offset().top;
+        if (top >= topMax && left <= leftMin) {
+          top = topMin;
+          left = leftMin;
+          isGoingForward = true;
+        } else if (isGoingForward && left >= leftMax) {
+          isGoingForward = false;
+          top = top + 100;
+        } else if (!isGoingForward && left <= leftMin) {
+          isGoingForward = true;
+          top = top + 100;
+        } else {
+          if (isGoingForward) {
+            left = left + 100;
+          } else {
+            left = left - 100;
+          }
+        }
+        console.log(top);
+        box.animate({
+          top: top,
+          left: left
+        });
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <button type="button" name="button" id="moveButton">Move Button</button>
+    <div id="box"></div>
+  </body>
+</html>
