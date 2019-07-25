@@ -1,11 +1,11 @@
-// $.ajax({
-//     url: 'http://localhost:8003/items/',
-//     type: 'get',
-//     dataType: 'json'
-// }).done((items) => {
-//     console.log(items);
-//     displayItems(items);
-// });
+$.ajax({
+    url: 'http://localhost:8003/items/',
+    type: 'get',
+    dataType: 'json'
+}).done((items) => {
+    console.log(items);
+    displayItems(items);
+});
 
 // var xmlHttp = new XMLHttpRequest();
 // xmlHttp.onreadystatechange = function() { 
