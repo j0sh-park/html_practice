@@ -1,11 +1,18 @@
 $(document).ready(() => {
     indexItems();
+
+    const domContainer = document.querySelector('#like_button_container');
+    ReactDOM.render((
+        <button onClick={() => this.setState({ liked: true })}>
+            Like
+        </button>
+    ), domContainer);
 });
 
 function indexItems() {
     $.get('http://localhost:8003/items/')
     .done((items) => {
-        for (item of items) {
+        for (const item of items) {
             const $itemContainer = $(`
     <div class="item-container"
     onClick="location.href = '/item-detail.html?id=${item.id}'">
